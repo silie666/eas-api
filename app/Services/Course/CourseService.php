@@ -100,7 +100,7 @@ class CourseService extends BaseService
      */
     public static function delete(Course $course)
     {
-        if ($course->studentCourseBills->isNotEmpty()) {
+        if (!$course->studentCourseBills->isEmpty()) {
             throw new BadRequestException('已生成账单，无法删除！');
         }
         $course->delete();
@@ -118,10 +118,8 @@ class CourseService extends BaseService
     {
         $collect = collect($attributes);
 
-        if ($course) {
-            if ($course->studentCourseBills->isNotEmpty()) {
-                throw new BadRequestException('已生成账单，无法更新！');
-            }
+        if (!$course?->studentCourseBills->isEmpty()) {
+            throw new BadRequestException('已生成账单，无法更新！');
         }
 
         return $collect->all();
