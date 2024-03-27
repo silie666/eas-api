@@ -23,7 +23,7 @@ class CreateOrUpdateRequest extends Request
         return [
             'name'          => '课程名称',
             'content'       => '课程内容',
-            'date'          => '上课时间',
+            'date'          => '上课日期',
             'fees'          => '课程费用',
             'student_ids'   => '学生IDs',
             'student_ids.*' => '学生ID',

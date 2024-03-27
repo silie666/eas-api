@@ -16,7 +16,7 @@ return new class extends Migration {
 
             $table->integer('teacher_id')->nullable()->comment('教师ID');
             $table->string('name')->nullable()->comment('课程名称');
-            $table->date('date')->nullable()->comment('年月');
+            $table->date('date')->nullable()->comment('上课日期');
             $table->text('content')->nullable()->comment('课程内容');
             $table->bigInteger('fees')->nullable()->comment('费用(单位：日元)');
 
