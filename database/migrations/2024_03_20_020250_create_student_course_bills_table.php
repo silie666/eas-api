@@ -23,6 +23,10 @@ return new class extends Migration {
             $table->bigInteger('paid_fees')->nullable()->comment('已付费用(单位：日元)');
 
             $table->json('extra_data')->nullable()->comment('额外字段');
+
+            $table->index(['course_bill_id', 'student_id', 'course_id'],'idx_course_bill_student_course');
+            $table->index(['card_number']);
+            $table->index(['pay_status']);
         });
     }
 
@@ -31,6 +35,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('course_bills');
+        Schema::dropIfExists('student_course_bills');
     }
 };

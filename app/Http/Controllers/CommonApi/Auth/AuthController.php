@@ -10,7 +10,6 @@ use App\Http\Resources\CommonApi\EmptyResource;
 use Illuminate\Support\Facades\Http;
 use Laravel\Passport\TokenRepository;
 use Package\Exceptions\Client\BadRequestException;
-use Laravel\Passport\RefreshTokenRepository;
 
 class AuthController extends Controller
 {
@@ -25,19 +24,23 @@ class AuthController extends Controller
     {
         $validated = $request->validated();
         $grantType = cons()->key('system.guard_type', \Arr::get($validated, 'guard_type'));
-        $url       = 'http://192.168.31.138:8080/oauth/token';
+        $url       = config('auth.oauth_url') . '/oauth/token';
 
         try {
             $response = Http::asForm()->post($url, [
                 'grant_type'    => 'password',
                 'client_id'     => config('auth.passport.' . $grantType . '_client_id'),
                 'client_secret' => config('auth.passport.' . $grantType . '_client_secret'),
-                'username'      => $request->get('username'),
-                'password'      => $request->get('password'),
-                'guard'         => $request->get('guard_type'),
+                'username'      => \Arr::get($validated, 'username'),
+                'password'      => \Arr::get($validated, 'password'),
+                'guard'         => \Arr::get($validated, 'guard_type'),
             ]);
             $response->throw();
         } catch (\Throwable $exception) {
+            \Log::error('登录失败', [
+                'exception' => $exception,
+                'request'   => $request->all(),
+            ]);
             throw new BadRequestException('登录失败');
         }
 

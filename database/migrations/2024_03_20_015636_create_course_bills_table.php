@@ -12,10 +12,13 @@ return new class extends Migration {
     {
         Schema::create('course_bills', function (Blueprint $table) {
             $table->comment('课程账单表');
+            $table->commonColumns();
             $table->integer('teacher_id')->nullable()->comment('教师id');
             $table->tinyInteger('status')->nullable()->comment('发送状态');
             $table->json('course_ids')->nullable()->comment('课程ids');
-            $table->commonColumns();
+
+            $table->index(['teacher_id']);
+            $table->index(['status']);
         });
     }
 

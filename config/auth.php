@@ -12,6 +12,7 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
+    'oauth_url' => env('OAUTH_URL', ''),
 
     'defaults' => [
         'guard'     => 'teacher',
@@ -102,13 +103,6 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table'    => 'password_reset_tokens',
-            'expire'   => 60,
-            'throttle' => 60,
-        ],
-
         'teacher' => [
             'provider' => 'teacher',
             'table'    => 'password_resets',

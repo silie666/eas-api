@@ -21,6 +21,8 @@ return new class extends Migration {
             $table->bigInteger('fees')->nullable()->comment('费用(单位：日元)');
 
             $table->json('student_ids')->nullable()->comment('学生IDs');
+
+            $table->index(['teacher_id', 'date']);
         });
     }
 

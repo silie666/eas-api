@@ -20,6 +20,10 @@ return new class extends Migration {
             $table->integer('card_table_id')->nullable()->comment('关联表ID');
             $table->string('card_table_type')->nullable()->comment('关联表类型');
 
+
+            $table->index(['card_table_type', 'card_table_id']);
+            $table->index(['brand_name']);
+            $table->index(['number']);
         });
     }
 

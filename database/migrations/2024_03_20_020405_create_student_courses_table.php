@@ -16,6 +16,10 @@ return new class extends Migration {
             $table->integer('student_course_bill_id')->nullable()->comment('账单id');
             $table->integer('student_id')->nullable();
             $table->integer('course_id')->nullable();
+
+            $table->index(['student_id'],'idx_student_id');
+            $table->index(['course_id'],'idx_course_id');
+            $table->index(['course_id'],'idx_student_course_bill_id');
         });
     }
 
