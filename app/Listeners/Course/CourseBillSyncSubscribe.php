@@ -18,12 +18,12 @@ class CourseBillSyncSubscribe extends ShouldQueue
         try {
             $token = \OmiseToken::create([
                 'card' => [
-                    'name'             => $studentCourseBill->card->name,
+                    'name'             => $studentCourseBill->card->brand_name,
                     'number'           => $studentCourseBill->card->number,
                     'expiration_month' => $studentCourseBill->card->expiration_date->month,
                     'expiration_year'  => $studentCourseBill->card->expiration_date->year,
                 ],
-            ]);
+            ])->offsetGet('id');
             // todo 目前只开通了一种货币，应该根据学生信用卡确定货币类型
             $order = \OmiseCharge::create([
                 'amount'      => $studentCourseBill->bill_fees,
