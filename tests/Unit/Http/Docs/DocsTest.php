@@ -21,7 +21,7 @@ class DocsTest extends TestCase
      */
     public function testCommonApiDocsOne()
     {
-        $commonApiDocs = $this->get('/docs/common-api');
+        $commonApiDocs = $this->get('/api/docs/common-api');
         $commonApiDocs->assertStatus(200);
     }
 
@@ -31,7 +31,7 @@ class DocsTest extends TestCase
      */
     public function testTeacherApiDocsOne()
     {
-        $adminApiDocs = $this->get('/docs/teacher-api');
+        $adminApiDocs = $this->get('/api/docs/teacher-api');
         $adminApiDocs->assertStatus(200);
     }
 
@@ -41,7 +41,7 @@ class DocsTest extends TestCase
      */
     public function testStudentApiDocsOne()
     {
-        $adminApiDocs = $this->get('/docs/student-api');
+        $adminApiDocs = $this->get('/api/docs/student-api');
         $adminApiDocs->assertStatus(200);
     }
 }
