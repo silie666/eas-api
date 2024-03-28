@@ -24,11 +24,11 @@ class Rbac
         }
         $uri = $request->getRequestUri();
 
-        if (!\Str::startsWith($uri, '/common-api')) {
+        if (!\Str::startsWith($uri, '/api/common-api')) {
             if (
-                ($user instanceof Student && !\Str::startsWith($uri, '/student-api'))
+                ($user instanceof Student && !\Str::startsWith($uri, '/api/student-api'))
                 ||
-                ($user instanceof Teacher && !\Str::startsWith($uri, '/teacher-api'))
+                ($user instanceof Teacher && !\Str::startsWith($uri, '/api/teacher-api'))
             ) {
                 throw new ForbiddenException('无权限访问');
             }
