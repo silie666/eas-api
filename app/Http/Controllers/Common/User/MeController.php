@@ -57,14 +57,14 @@ class MeController extends Controller
 
         $userNodes = collect();
         foreach ($routes as $route) {
-            if ($user instanceof Student && \Str::startsWith($route->uri, 'student-api')) {
+            if ($user instanceof Student && \Str::is('*student-api*',$route->uri)) {
                 $item = [
                     'uri'  => $route->uri,
                     'sign' => $route->methods[0] . ' ' . $route->uri,
                 ];
                 $userNodes->add($item);
             }
-            if ($user instanceof Teacher && \Str::startsWith($route->uri, 'teacher-api')) {
+            if ($user instanceof Teacher && \Str::is('*teacher-api*',$route->uri)) {
 
                 $item = [
                     'uri'  => $route->uri,
