@@ -24,7 +24,7 @@ class AuthController extends Controller
     {
         $validated = $request->validated();
         $grantType = cons()->key('system.guard_type', \Arr::get($validated, 'guard_type'));
-        $url       = config('auth.oauth_url') . '/oauth/token';
+        $url       = config('auth.oauth_url') . '/api/oauth/token';
 
         try {
             $response = Http::asForm()->post($url, [

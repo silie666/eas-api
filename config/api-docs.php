@@ -7,7 +7,7 @@ return [
     'providers' => [
         'common-api'  => [
             'driver'  => 'open_api',
-            'uri'     => 'common-api',
+            'uri'     => 'api/common-api',
             'options' => [
                 'schema'        => [
                     'remove_prefix' => 'App\Http\Resources\CommonApi',
@@ -16,7 +16,7 @@ return [
                 'info'          => [
                     'title'       => '公共Api',
                     'version'     => '1.0.0.0',
-                    'description' => '请求接口地址：' . rtrim(env('APP_URL'), '/') . '/common-api/',
+                    'description' => '请求接口地址：' . rtrim(env('APP_URL'), '/') . '/api/common-api/',
                 ],
                 'external_docs' => [
                     'description' => '接口接入规范文档',
@@ -26,7 +26,7 @@ return [
         ],
         'student-api' => [
             'driver'  => 'open_api',
-            'uri'     => 'student-api',
+            'uri'     => 'api/student-api',
             'options' => [
                 'schema'        => [
                     'remove_prefix' => 'App\Http\Resources\StudentApi',
@@ -35,7 +35,7 @@ return [
                 'info'          => [
                     'title'       => '学生端Api',
                     'version'     => '1.0.0.0',
-                    'description' => '请求接口地址：' . rtrim(env('APP_URL'), '/') . '/student-api/',
+                    'description' => '请求接口地址：' . rtrim(env('APP_URL'), '/') . '/api/student-api/',
                 ],
                 'external_docs' => [
                     'description' => '接口接入规范文档',
@@ -45,7 +45,7 @@ return [
         ],
         'teacher-api' => [
             'driver'  => 'open_api',
-            'uri'     => 'teacher-api',
+            'uri'     => 'api/teacher-api',
             'options' => [
                 'schema'        => [
                     'remove_prefix' => 'App\Http\Resources\TeacherApi',
@@ -54,7 +54,7 @@ return [
                 'info'          => [
                     'title'       => '教师端Api',
                     'version'     => '1.0.0.0',
-                    'description' => '请求接口地址：' . rtrim(env('APP_URL'), '/') . '/teacher-api/',
+                    'description' => '请求接口地址：' . rtrim(env('APP_URL'), '/') . '/api/teacher-api/',
                 ],
                 'external_docs' => [
                     'description' => '接口接入规范文档',

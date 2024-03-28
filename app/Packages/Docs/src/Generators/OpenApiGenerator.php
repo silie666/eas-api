@@ -585,7 +585,7 @@ class OpenApiGenerator extends Generator
         if (is_null(static::$removePrefixes)) {
             $subNamespace = $this->option('namespace');
             if (!$subNamespace) {
-                $subNamespace = collect(explode('/', $this->analyser->getUriPrefix()))
+                $subNamespace = collect(explode('/', $this->analyser->getUriPrefix())[1])
                     ->map(fn($string) => Str::studly($string))
                     ->implode('\\');
             }
@@ -600,7 +600,6 @@ class OpenApiGenerator extends Generator
         $className = Str::start($className, '\\');
         $result    = $this->removePrefixes($className, static::$removePrefixes);
         $result    = $this->removeSuffixes($result, static::$removeSuffixes);
-
         // 前缀移除失败，抛出异常
         if (str_starts_with($result, '\\')) {
             throw new RuntimeException('路由分组 ' . $this->analyser->getUriPrefix() .

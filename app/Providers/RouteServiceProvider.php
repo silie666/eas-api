@@ -70,6 +70,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
             ->namespace($this->namespace)
+            ->prefix('api')
             ->group(base_path('routes/web.php'));
     }
 
@@ -83,17 +84,17 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         // 教师端接口
-        Route::prefix('teacher-api')
+        Route::prefix('api/teacher-api')
             ->middleware('api')
             ->group(base_path('routes/teacher-api.php'));
 
         // 学生端接口
-        Route::prefix('student-api')
+        Route::prefix('api/student-api')
             ->middleware('api')
             ->group(base_path('routes/student-api.php'));
 
         // 公共调用接口
-        Route::prefix('common-api')
+        Route::prefix('api/common-api')
             ->middleware('api')
             ->group(base_path('routes/common-api.php'));
     }
@@ -107,7 +108,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapDocsRoutes()
     {
         if ($this->app->make('config')->get('app.env') !== 'production') {
-            Route::prefix('docs')->group(base_path('routes/docs.php'));
+            Route::prefix('api/docs')->group(base_path('routes/docs.php'));
         }
     }
 }

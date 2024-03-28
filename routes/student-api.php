@@ -2,10 +2,10 @@
 
 
 Route::middleware(['auth:student', 'rbac'])->group(function () {
-    Route::get('/courses', [\App\Http\Controllers\StudentApi\Course\CourseController::class, 'index']);
+    Route::get('courses', [\App\Http\Controllers\StudentApi\Course\CourseController::class, 'index']);
 
-    Route::get('/course-bills', [\App\Http\Controllers\StudentApi\Course\CourseController::class, 'bills']);
-    Route::patch('/course-bills/{courseBillId}/pay',
+    Route::get('course-bills', [\App\Http\Controllers\StudentApi\Course\CourseController::class, 'bills']);
+    Route::patch('course-bills/{courseBillId}/pay',
         [\App\Http\Controllers\StudentApi\Course\CourseController::class, 'pay']);
 
     Route::get('me-cards', [\App\Http\Controllers\StudentApi\User\MeController::class, 'cards']);
