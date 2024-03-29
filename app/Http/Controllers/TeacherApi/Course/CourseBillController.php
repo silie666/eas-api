@@ -38,7 +38,7 @@ class CourseBillController extends Controller
      */
     public function show(EmptyRequest $request, int $courseBillId)
     {
-        $courseBill = CourseBillService::getCourseBill($courseBillId);
+        $courseBill = CourseBillService::getCourseBill($courseBillId)->load(['studentCourseBills']);
         return new CourseBillResource($courseBill);
     }
 

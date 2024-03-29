@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\StudentApi\Course;
+namespace App\Http\Resources\Common\Course;
 
-use App\Http\Resources\StudentApi\BaseResource;
+use App\Http\Resources\Common\BaseResource;
 
-class CourseBillResource extends BaseResource
+class StudentCourseBillResource extends BaseResource
 {
     public static function properties(): array
     {

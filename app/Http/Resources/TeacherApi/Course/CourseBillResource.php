@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\TeacherApi\Course;
 
+use App\Http\Resources\Common\Course\StudentCourseBillResource;
 use App\Http\Resources\TeacherApi\BaseResource;
 
 class CourseBillResource extends BaseResource
@@ -17,6 +18,8 @@ class CourseBillResource extends BaseResource
             'course_ids'  => static::propArray('课程IDs', format: 'number'),
             'courses'     => static::propCollection('课程', SimpleCourseResource::class),
             'create_time' => static::propDatetime('创建时间'),
+
+            'student_course_bills' => static::propWhenLoadedModels('学生账单', StudentCourseBillResource::class),
         ];
     }
 }

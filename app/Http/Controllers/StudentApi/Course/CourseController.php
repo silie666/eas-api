@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentApi\Course\BillIndexRequest;
 use App\Http\Requests\StudentApi\Course\BillPayRequest;
 use App\Http\Requests\StudentApi\Course\IndexRequest;
-use App\Http\Resources\StudentApi\Course\CourseBillResource;
-use App\Http\Resources\StudentApi\Course\CourseResource;
+use App\Http\Resources\Common\Course\StudentCourseBillResource;
+use App\Http\Resources\Common\Course\StudentCourseResource;
 use App\Http\Resources\StudentApi\EmptyResource;
 use App\Services\Course\StudentCourseBillService;
 use App\Services\Course\StudentCourseService;
@@ -19,7 +19,7 @@ class CourseController extends Controller
      *
      * @param \App\Http\Requests\StudentApi\Course\IndexRequest $request
      *
-     * @return \App\Http\Resources\StudentApi\Course\CourseResource[]
+     * @return \App\Http\Resources\Common\Course\StudentCourseResource[]
      */
     public function index(IndexRequest $request)
     {
@@ -29,7 +29,7 @@ class CourseController extends Controller
 
         $courses = StudentCourseService::query($validated)->with(['course'])->paginate($perPage);
 
-        return CourseResource::collection($courses);
+        return StudentCourseResource::collection($courses);
     }
 
     /**
@@ -37,7 +37,7 @@ class CourseController extends Controller
      *
      * @param \App\Http\Requests\StudentApi\Course\BillIndexRequest $request
      *
-     * @return \App\Http\Resources\StudentApi\Course\CourseBillResource[]
+     * @return \App\Http\Resources\Common\Course\StudentCourseBillResource[]
      */
     public function bills(BillIndexRequest $request)
     {
@@ -46,7 +46,7 @@ class CourseController extends Controller
         $perPage = $request->getPerPage();
         $bills   = StudentCourseBillService::query($validated)->paginate($perPage);
 
-        return CourseBillResource::collection($bills);
+        return StudentCourseBillResource::collection($bills);
     }
 
     /**
